@@ -12,27 +12,25 @@ repository = "https://github.com/swimlane/pyattck"
 pyattck = "pyattck.cli:main"
 
 [tool.poetry.dependencies]
-python = "^3.7"
-requests = "^2.27.1"
-fire = "^0.4.0"
-attrs = "^21.4.0"
+python = "^3.10"
+requests = ">=2.27.1"
+# fire = "^0.4.0"
+attrs = ">=21.4.0"
 pyattck-data = "^2.6.3"
-rich = "^12.5.1"
-
-[tool.poetry.dev-dependencies]
-pytest = "^7.1.2"
-pylama = "^8.3.8"
-coverage = "^6.4.1"
-recommonmark = "^0.7.1"
-black = "^22.3.0"
-isort = "^5.10.1"
-flake8 = "^4.0.1"
-bandit = "^1.7.4"
-Sphinx = "<4.4.0"
-importlib-metadata = "<3.4"
+# rich = "^12.5.1"
 
 [tool.poetry.group.dev.dependencies]
-safety = "^2.3.5"
+pytest = ">=7.1.2"
+pylama = ">=8.3.8"
+coverage = ">=6.4.1"
+recommonmark = ">=0.7.1"
+black = ">=22.3.0"
+isort = ">=5.10.1"
+flake8 = ">=4.0.1"
+bandit = ">=1.7.4"
+Sphinx = "<4.4.0"
+importlib-metadata = "<3.4"
+safety = ">=2.3.5"
 
 [build-system]
 requires = ["poetry-core>=1.4.0"]
