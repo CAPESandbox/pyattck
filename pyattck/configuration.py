@@ -1,7 +1,7 @@
 import os
 import warnings
-
-import orjson
+import json
+# import orjson
 import yaml
 from attrs import asdict, define, field
 from pydantic import DirectoryPath, FilePath, HttpUrl
@@ -65,15 +65,18 @@ class Options:
     def _download_url_data(self, url):
         response = request("GET", url, **self.kwargs)
         if response.status_code == 200:
-            return orjson.loads(response.content)  # Use orjson
+            # return orjson.loads(response.content)  # Use orjson
+            return response.json()
         return {}
 
     def _read_from_disk(self, path):
         if os.path.exists(path) and os.path.isfile(path):
             try:
-                with open(path, 'rb') as f:  # Open as binary for orjson
+                # with open(path, 'rb') as f:  # Open as binary for orjson
+                with open(path) as f:
                     if path.endswith(".json"):
-                        return orjson.loads(f.read())  # Use orjson
+                        return json.load(f)
+                        # return orjson.loads(f.read())  # Use orjson
                     elif path.endswith(".yml") or path.endswith(".yaml"):
                         return Configuration(**yaml.load(f, Loader=yaml.SafeLoader))
                     else:
@@ -98,13 +101,14 @@ class Options:
                     )
             with open(path, "w+") as f:
                 if path.endswith(".json"):
-                    f.write(orjson.dumps(data).decode('utf-8'))  # Use orjson
+                    json.dump(data, f)
+                    # f.write(orjson.dumps(data).decode('utf-8'))  # Use orjson
                 elif path.endswith(".yml") or path.endswith(".yaml"):
                     yaml.dump(data, f)
                 else:
                     raise UnknownFileError(provided_value=path, known_values=[".json", ".yml", ".yaml"])
         except IsADirectoryError as ie:
-            raise Exception(f"The provided path is a directory: {path}")
+            raise Exception(f"The provided path is a directory: {path}: {str(ie)}")
 
     def _save_json_data(self, force: bool = False) -> None:
         if not os.path.exists(self.config.data_path):
