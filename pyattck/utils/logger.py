@@ -43,4 +43,5 @@ class LoggingBase(type):
                 config = yaml.safe_load(f.read())
             logger = logging.config.dictConfig(config)
         else:
-            logger = logging.basicConfig(level=default_level)
+            # logger = logging.basicConfig(level=default_level)
+            logger = logging.getLogger()
