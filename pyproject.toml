@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyattck"
-version = "7.2.0"
+version = "7.2.1"
 description = "A Python package to interact with the Mitre ATT&CK Frameworks"
 authors = ["Swimlane <info@swimlane.com>"]
 license = "MIT"
@@ -15,9 +15,9 @@ pyattck = "pyattck.cli:main"
 python = "^3.10"
 requests = ">=2.27.1"
 # fire = "^0.4.0"
-attrs = ">=21.4.0"
+attrs = ">=25.1.0"
 pyattck-data = { git = "https://github.com/CAPESandbox/pyattck-data"}
-# rich = "^12.5.1"
+rich = "^13.9.4"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=7.1.2"

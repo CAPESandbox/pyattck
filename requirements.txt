@@ -1,6 +1,7 @@
 requests
 PyYaml>=5.4.1
 fire==0.3.1
-attrs==21.4.0
-pyattck-data>=2.5.0
+attrs>=25.1.0
+git+https://github.com/CAPESandbox/pyattck-data#egg=pyattck-data
+rich>=13.9.4
 orjson

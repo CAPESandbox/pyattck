@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.2.1](https://github.com/swimlane/pyattck/compare/7.2.0...7.2.1) (2026-02-09)
+
+
+### Features
+
+* Update dependency versions and sources: bump attrs to >=25.1.0 (was >=21.4.0 / pinned 21.4.0 in requirements), enable rich (13.9.4) in pyproject and add to requirements, and switch pyattck-data in requirements to the git repository reference. These changes bring dependencies up to date and align requirements.txt with pyproject.toml.
+
+
+### Bug Fixes
+
+* Replaced `orjson` with standard `json` in configuration module due to compatibility issues.
+* Updated logger to use `logging.getLogger()` instead of `logging.basicConfig()` for better integration.
+
+
 ## [7.2.0](https://github.com/stevengoossensB/pyattck/compare/v7.1.2...7.2.0) (2023-10-10)
 
 
